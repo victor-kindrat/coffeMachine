@@ -87,6 +87,7 @@ function setDate() {
     date.getMinutes() <= 9 ? $('.user__minutes').text("0" + date.getMinutes()) : $('.user__minutes').text(date.getMinutes());
     $('.user__day').text(days[date.getDay()])
 }
+setDate()
 setInterval(() => {
     date = new Date();
     setDate();
