@@ -1,6 +1,7 @@
 let date = new Date();
 let bgtable = document.getElementById('bgTable');
 let desk = document.getElementById('desk');
+let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 let userInterfacesHtml = {
     main: `<div class="user__time">
             <div class="user__row">
@@ -61,13 +62,14 @@ function CoffeMachine (power) {
 }
 
 let coffeMachine = new CoffeMachine(200);
-
-$('.user__hours').text(date.getHours())
-$('.user__minutes').text(date.getMinutes())
+function setDate() {
+    $('.user__hours').text(date.getHours())
+    $('.user__minutes').text(date.getMinutes());
+    $('.user__day').text(days[date.getDay()])
+}
 setInterval(() => {
     date = new Date();
-    $('.user__hours').text(date.getHours())
-    $('.user__minutes').text(date.getMinutes())
+    setDate();
 }, 1000);
 
 $('#desk').css('top', bgtable.offsetTop - desk.offsetTop + 5 + 'px');
