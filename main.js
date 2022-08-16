@@ -172,6 +172,9 @@ function CoffeMachine (power) {
                 $('#addWaterBtn').click(function(){
                     coffeMachine.addWater();
                 })
+                $('#startBtn').click(function(){
+                    coffeMachine.start();
+                })
             })
         }
     }
