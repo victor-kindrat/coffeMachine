@@ -143,6 +143,45 @@
   background-color: #222222;
   border-radius: 3px;
   border: 4px solid rgb(69, 69, 69);
+  color: rgba(55, 255, 20, 0.6862745098);
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__time .user__row {
+  text-align: center;
+  font-size: 45px;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__time .user__day {
+  text-align: center;
+  font-size: 18px;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__btn-place {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 15px;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__btn-place .user__btn {
+  width: 50%;
+  background: transparent;
+  color: rgba(55, 255, 20, 0.6862745098);
+  font-family: "DJB Get Digital", monospace;
+  text-transform: uppercase;
+  font-size: 25px;
+  border: dashed 3px rgba(55, 255, 20, 0.6862745098);
+  padding: 15px;
+  cursor: pointer;
 }
 .wrap .coffeMachine .user__result {
   width: 400px;
