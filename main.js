@@ -34,7 +34,7 @@ let userInterfacesHtml = {
               <span class="user__waitMinutes">00</span>:<span class="user__waitSeconds">00</span>
               </div>
               <div class="user__headline">Status:</div>
-              <div class="user__status"><div class="user__loader"><div class="user__loaderSymb"></div></div><span class="user__statusValue">Boiling water</span></div>`
+              <div class="user__status"><div class="user__loader"><div class="user__loaderSymb"></div></div><span class="user__statusValue">Water intake</span></div>`
 }
 function CoffeMachine (power) {
     this.waterAmount = 0;
