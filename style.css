@@ -89,12 +89,13 @@
   height: 0%;
   max-height: calc(100% - 10px);
   min-height: 10px;
-  background-color: rgb(76, 76, 231);
-  opacity: 0.4;
+  background-color: rgba(76, 76, 231, 0.4);
+  opacity: 1;
   margin-left: -50%;
   border-radius: 0;
   z-index: 1;
   transition: height 2s linear;
+  backdrop-filter: blur(3px);
 }
 .wrap .coffeMachine .water .water__decor {
   height: 30%;
