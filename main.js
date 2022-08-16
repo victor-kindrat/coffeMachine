@@ -11,13 +11,13 @@ let userInterfacesHtml = {
             </div>
             <div class="user__btn-place">
             <button class="user__btn" id="addWaterBtn">Add Water</button>
-            <button class="user__btn">Start</button>
+            <button class="user__btn" id="startBtn">Start</button>
             </div>`,
     alert: `<div class="user__alert" id="user-alert"></div>`, 
     coffeCount: `<div class="user__headline">How much coffe you want?</div>
                 <div class="user__counter">
                 <button class="user__counterBtn user__decrement">-</button>
-                <div class="user__counterWindow" id="coffeCounter">00</div>
+                <div class="user__counterWindow" id="coffeCounter">00 ml</div>
                 <button class="user__counterBtn user__increment">+</button>
                 </div>
                 <button class="user__nextBtn" id="coffeNext">Next</button>`,
@@ -58,6 +58,23 @@ function CoffeMachine (power) {
         timeout = setTimeout(onReady, getBoilTime())
     }
 
+    this.start = function () {
+        $('#interface').html(userInterfacesHtml.coffeCount);
+        let coffeCount = 0;
+        $('.user__increment').click(function(){
+            if (coffeCount < 200) {
+                coffeCount+=50
+                $('.user__counterWindow').text(coffeCount + ' ml')
+            }
+        })
+        $('.user__decrement').click(function(){
+            if (coffeCount > 0) {
+                coffeCount-=50
+                $('.user__counterWindow').text(coffeCount + ' ml')
+            }
+        })
+    }
+
     this.stop = function () {
         clearTimeout(timeout)
     }
@@ -96,4 +113,8 @@ setInterval(() => {
 $('#desk').css('top', bgtable.offsetTop - desk.offsetTop + 5 + 'px');
 $('#addWaterBtn').click(function(){
     coffeMachine.addWater();
+})
+
+$('#startBtn').click(function(){
+    coffeMachine.start();
 })

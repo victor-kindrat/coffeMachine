@@ -204,6 +204,7 @@
   line-height: 25px;
   border: 2px dashed rgba(55, 255, 20, 0.6862745098);
   padding: 10px 25px;
+  text-transform: uppercase;
 }
 .wrap .coffeMachine .user .user__group .user__interface .user__nextBtn {
   background: transparent;
