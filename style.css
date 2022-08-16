@@ -153,6 +153,68 @@
   justify-content: space-around;
   padding: 15px;
 }
+.wrap .coffeMachine .user .user__group .user__interface .user__loader {
+  height: 20px;
+  width: 20px;
+  animation: spin 2s infinite steps(1);
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__loader .user__loaderSymb {
+  height: 3px;
+  width: 100%;
+  background: rgba(55, 255, 20, 0.6862745098);
+  border-radius: 5px/3px 0;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__status {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__timer {
+  font-size: 50px;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__text {
+  font-size: 16px;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__headline {
+  font-size: 25px;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__counter {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__counter .user__counterBtn {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgba(55, 255, 20, 0.6862745098);
+  font-family: "DJB Get Digital", monospace;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__counter .user__counterWindow {
+  font-size: 30px;
+  line-height: 25px;
+  border: 2px dashed rgba(55, 255, 20, 0.6862745098);
+  padding: 10px 25px;
+}
+.wrap .coffeMachine .user .user__group .user__interface .user__nextBtn {
+  background: transparent;
+  border: 2px rgba(55, 255, 20, 0.6862745098) dashed;
+  padding: 5px 45px;
+  text-transform: uppercase;
+  font-family: "DJB Get Digital", monospace;
+  color: rgba(55, 255, 20, 0.6862745098);
+  font-size: 18px;
+  cursor: pointer;
+}
 .wrap .coffeMachine .user .user__group .user__interface .user__alert {
   font-size: 35px;
   animation: blick 1.5s 3 steps(1);
@@ -269,6 +331,20 @@
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(-90deg);
   }
 }
 

@@ -13,7 +13,27 @@ let userInterfacesHtml = {
             <button class="user__btn" id="addWaterBtn">Add Water</button>
             <button class="user__btn">Start</button>
             </div>`,
-    alert: `<div class="user__alert" id="user-alert"></div>`
+    alert: `<div class="user__alert" id="user-alert"></div>`, 
+    coffeCount: `<div class="user__headline">How much coffe you want?</div>
+                <div class="user__counter">
+                <button class="user__counterBtn user__decrement">-</button>
+                <div class="user__counterWindow" id="coffeCounter">00</div>
+                <button class="user__counterBtn user__increment">+</button>
+                </div>
+                <button class="user__nextBtn" id="coffeNext">Next</button>`,
+    sugarCount: `<div class="user__headline">How much sugar you want?</div>
+                <div class="user__counter">
+                <button class="user__counterBtn user__decrement">-</button>
+                <div class="user__counterWindow" id="sugarCounter">0</div>
+                <button class="user__counterBtn user__increment">+</button>
+                </div>
+                <button class="user__nextBtn" id="sugarNext">Next</button>`,
+    waiting: `<div class="user__headline">Wait for:</div>
+              <div class="user__row user__timer">
+              <span class="user__waitMinutes">00</span>:<span class="user__waitSeconds">00</span>
+              </div>
+              <div class="user__headline">Status:</div>
+              <div class="user__status"><div class="user__loader"><div class="user__loaderSymb"></div></div><span class="user__statusValue">Boiling water</span></div>`
 }
 function CoffeMachine (power) {
     this.waterAmount = 0;
