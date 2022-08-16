@@ -83,8 +83,16 @@ function CoffeMachine (power) {
 
 let coffeMachine = new CoffeMachine(200);
 function setDate() {
-    $('.user__hours').text(date.getHours())
-    $('.user__minutes').text(date.getMinutes());
+    if (date.getHours() <= 9) {
+        $('.user__hours').text('0' + date.getHours())
+    } else {
+        $('.user__hours').text(date.getHours())
+    }
+    if (date.getMinutes() <= 9) {
+        $('.user__minutes').text("0" + date.getMinutes());
+    } else {
+        $('.user__minutes').text(date.getMinutes())
+    }
     $('.user__day').text(days[date.getDay()])
 }
 setInterval(() => {
