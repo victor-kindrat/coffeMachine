@@ -5,7 +5,8 @@
   width: 100%;
   font-family: "DJB Get Digital", monospace;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 50px;
   align-items: center;
   justify-content: center;
   user-select: none;
@@ -243,6 +244,14 @@
 .wrap .history:hover {
   outline: 3px dashed #CA955C;
   outline-offset: -12px;
+}
+.wrap .desk {
+  width: 350px;
+  height: 350px;
+  background: url(./images/carpet.svg) 0% 0%;
+  background-size: 50%;
+  z-index: 10;
+  position: relative;
 }
 
 /*# sourceMappingURL=style.css.map */
