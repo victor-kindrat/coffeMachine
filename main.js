@@ -34,7 +34,8 @@ let userInterfacesHtml = {
               <span class="user__waitMinutes">00</span>:<span class="user__waitSeconds">00</span>
               </div>
               <div class="user__headline">Status:</div>
-              <div class="user__status"><div class="user__loader"><div class="user__loaderSymb"></div></div><span class="user__statusValue">Water intake</span></div>`
+              <div class="user__status"><div class="user__loader"><div class="user__loaderSymb"></div></div><span class="user__statusValue">Water intake</span></div>
+              <button class="user__nextBtn" id="cancelBtn">Cancel</button>`
 }
 function CoffeMachine (power) {
     this.waterAmount = 0;
@@ -47,9 +48,20 @@ function CoffeMachine (power) {
     }.bind(this);
 
     let onReady = function () {
-      alert('Coffe complete')
-      this.waterAmount-=25;
-      console.log(this.waterAmount)
+        localStorage.setItem('amount', this.waterAmount);
+        $('#interface').html(userInterfacesHtml.alert);
+        $('.user__alert').html('Your coffe is done! <br>Bon appetit');
+        let thisAlert = document.getElementById('user-alert');
+        thisAlert.addEventListener('animationend', function() {
+            $('#interface').html(userInterfacesHtml.main)
+            $('#addWaterBtn').click(function(){
+                this.addWater();
+                localStorage.setItem('amount', this.waterAmount);
+            }.bind(this))
+            $('#startBtn').click(function(){
+                this.start();
+            }.bind(this))
+        }.bind(this))
     }.bind(this)
 
     let timeout;
@@ -100,15 +112,21 @@ function CoffeMachine (power) {
                         $('#interface').html(userInterfacesHtml.main)
                         $('#addWaterBtn').click(function(){
                             this.addWater();
+                            localStorage.setItem('amount', this.waterAmount);
                         }.bind(this))
                         $('#startBtn').click(function(){
                             coffeMachine.start();
                         })
                     }.bind(this))
                 } else {
+                    $('#interface').html(userInterfacesHtml.waiting);
+                    $('#cancelBtn').click(function(){
+                        this.waterAmount += waterPerc;
+                        $('.water__value').css('height', this.waterAmount + '%')
+                        this.stop();
+                    }.bind(this))
                     this.waterAmount -= waterPerc;
                     $('#waterValue').css('height', this.waterAmount + '%');
-                    $('#interface').html(userInterfacesHtml.waiting);
                     let timeToEnd = getBoilTime(coffeCount) + sugarCount * 300 + 6000
                     timeout = setTimeout(onReady, timeToEnd);
                     let secondsToEnd = Math.round(timeToEnd / 1000);
@@ -155,6 +173,19 @@ function CoffeMachine (power) {
     }
 
     this.stop = function () {
+        $('#interface').html(userInterfacesHtml.alert);
+        $('.user__alert').html('Caneled!');
+        let thisAlert = document.getElementById('user-alert');
+        thisAlert.addEventListener('animationend', function() {
+            $('#interface').html(userInterfacesHtml.main)
+            $('#addWaterBtn').click(function(){
+                this.addWater();
+                localStorage.setItem('amount', this.waterAmount);
+            }.bind(this))
+            $('#startBtn').click(function(){
+                this.start();
+            }.bind(this))
+        }.bind(this))
         clearTimeout(timeout)
     }
 
@@ -171,16 +202,21 @@ function CoffeMachine (power) {
                 $('#interface').html(userInterfacesHtml.main)
                 $('#addWaterBtn').click(function(){
                     coffeMachine.addWater();
-                })
+                    localStorage.setItem('amount', this.waterAmount);
+                }.bind(this))
                 $('#startBtn').click(function(){
                     coffeMachine.start();
                 })
-            })
+            }.bind(this))
         }
-    }
+    }.bind(this)
 }
 
 let coffeMachine = new CoffeMachine(500);
+let coffeAmount = parseInt(localStorage.getItem('amount')) || 0;
+coffeMachine.waterAmount = coffeAmount;
+$('.water__value').css('height', coffeAmount + '%')
+
 function setDate() {
     date.getHours() <= 9 ? $('.user__hours').text('0' + date.getHours()) : $('.user__hours').text(date.getHours())
     date.getMinutes() <= 9 ? $('.user__minutes').text("0" + date.getMinutes()) : $('.user__minutes').text(date.getMinutes());
@@ -195,6 +231,7 @@ setInterval(() => {
 $('#desk').css('top', bgtable.offsetTop - desk.offsetTop + 5 + 'px');
 $('#addWaterBtn').click(function(){
     coffeMachine.addWater();
+    localStorage.setItem('amount', coffeMachine.waterAmount);
 })
 
 $('#startBtn').click(function(){

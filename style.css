@@ -221,6 +221,7 @@
   font-size: 35px;
   animation: blick 1.5s 3 steps(1);
   text-transform: uppercase;
+  text-align: center;
 }
 .wrap .coffeMachine .user .user__group .user__interface .user__time {
   display: flex;
