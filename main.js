@@ -290,6 +290,15 @@ function CoffeMachine(power) {
 }
 
 let coffeMachine = new CoffeMachine(500);
+coffeMachine.history = JSON.parse(localStorage.getItem('history')) || [];
+if (coffeMachine.history.length === 0) {
+    $('.history__inner').html('You haven\'t done any coffe yet')
+} else {
+    for (let i = 0; i!== coffeMachine.history.length; i++) {
+        let date = new Date(coffeMachine.history[i].date)
+        $('.history__inner').append(`<b>${date.getDate()}.${date.getMonth() + 1} </b> - ${coffeMachine.history[i].countOfCoffe} ml of coffe with ${coffeMachine.history[i].countOfSugar} pieces of sugar`)
+    }
+}
 let coffeAmount = parseInt(localStorage.getItem('amount')) || 0;
 coffeMachine.waterAmount = coffeAmount;
 $('.water__value').css('height', coffeAmount + '%')

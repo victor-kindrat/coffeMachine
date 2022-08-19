@@ -365,6 +365,7 @@
 }
 
 .history__wrapper {
+  min-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -373,6 +374,7 @@
   padding: 25px;
   border-radius: 15px/10px;
   font-family: "Montserrat", sans-serif;
+  color: #141414;
 }
 .history__wrapper .JPO_close {
   height: 20px;
@@ -387,6 +389,12 @@
 .history__wrapper .history__headline {
   font-size: calc(20px + 1vw);
   color: #876445;
+}
+.history__wrapper b {
+  font-weight: 700;
+}
+.history__wrapper .history__inner {
+  margin-top: 25px;
 }
 
 @keyframes blick {
