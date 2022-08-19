@@ -153,6 +153,10 @@ function CoffeMachine(power) {
                         this.waterAmount += waterPerc;
                         $('.water__value').css('height', this.waterAmount + '%')
                         this.stop();
+                        $('.user__result-cup').css({
+                            'backgroundSize': '100% 40%',
+                            'backgroundPosition': 'center -300%'
+                        })
                     }.bind(this))
                     $('#waterValue').css('height', this.waterAmount + '%');
                     let timeToEnd = getBoilTime(coffeCount) + sugarCount * 300 + 6000
