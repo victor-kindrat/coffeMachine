@@ -2,7 +2,18 @@ let date = new Date();
 let bgtable = document.getElementById('bgTable');
 let desk = document.getElementById('desk');
 let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-let statuses = ['Water intake', 'Boiling water', 'Shake with coffe', 'Pouring coffee', 'Add a sugar']
+let statuses = ['Water intake', 'Boiling water', 'Shake with coffe', 'Pouring coffee', 'Add a sugar'];
+$(document).ready(function () {
+
+    // Initialize the plugin
+    $('#JPO').popup({
+        opacity: 0.3,
+        transition: 'all 0.3s'
+      });
+
+    // Set default `pagecontainer` for all popups (optional, but recommended for screen readers and iOS*)
+    $.fn.popup.defaults.pagecontainer = '#wrap'
+});
 let userInterfacesHtml = {
     main: `<div class="user__time">
             <div class="user__row">
@@ -39,6 +50,7 @@ let userInterfacesHtml = {
 }
 
 function CoffeMachine(power) {
+    this.history = [];
     this.waterAmount = 0;
 
     const WATER_HEAT_CAPACITY = 4200
@@ -47,8 +59,16 @@ function CoffeMachine(power) {
         let t = water * WATER_HEAT_CAPACITY * 80 / power;
         return t
     }.bind(this);
+    let coffeSaved = 0;
+    let sugarSave = 0;
 
     let onReady = function () {
+        this.history.push({
+            date: new Date(),
+            countOfCoffe: coffeSaved,
+            countOfSugar: sugarSave
+        });
+        localStorage.setItem('history', JSON.stringify(this.history))
         localStorage.setItem('amount', this.waterAmount);
         $('#interface').html(userInterfacesHtml.alert);
         $('.user__alert').html('Your coffe is done! <br>Bon appetit');
@@ -63,6 +83,16 @@ function CoffeMachine(power) {
                 this.start();
             }.bind(this))
         }.bind(this))
+        $('.user__result-cup').click(function () {
+            $(this).fadeOut(300)
+            setTimeout(() => {
+                $('.user__result-cup').css({
+                    'backgroundSize': '100% 40%',
+                    'backgroundPosition': 'center -300%'
+                })
+                $('.user__result-cup').fadeIn(0)
+            }, 1000);
+        })
     }.bind(this)
 
     let timeout;
@@ -183,6 +213,8 @@ function CoffeMachine(power) {
                     }, 1000)
                     let i = 0;
                     $('.user__statusValue').text(statuses[i]);
+                    coffeSaved = coffeAmount;
+                    sugarSave = sugarCount;
                     setTimeout(function () {
                         i++;
                         $('.user__statusValue').text(statuses[i]);

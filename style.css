@@ -364,6 +364,31 @@
   position: relative;
 }
 
+.history__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #EDDFB3;
+  padding: 25px;
+  border-radius: 15px/10px;
+  font-family: "Montserrat", sans-serif;
+}
+.history__wrapper .JPO_close {
+  height: 20px;
+  width: 20px;
+  background: #f02c2c;
+  border-radius: 5px/3px 0;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 25px;
+}
+.history__wrapper .history__headline {
+  font-size: calc(20px + 1vw);
+  color: #876445;
+}
+
 @keyframes blick {
   0% {
     opacity: 1;
