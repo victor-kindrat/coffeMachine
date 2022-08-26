@@ -1,2 +1,2 @@
 # coffeMachine
-in dev
+JS project. Coffe machine.  
